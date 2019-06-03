@@ -1,0 +1,71 @@
+@import "./mixin.scss";
+
+.wft-wap {
+  @include px2rem('padding', 40px 0);
+
+  width: 100%;
+
+  &-imgbox {
+    @include px2rem('width', 282px);
+    @include px2rem('height', 94px);
+
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  &-img {
+    width: auto;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-nav {
+    @include px2rem('padding', 40px 0);
+
+    text-align: center;
+  }
+
+  &-link {
+    @include font(24px);
+    @include px2rem('padding', 0 32px);
+
+    font-family: 'PingFangSC-Regular';
+    color: #596075;
+    letter-spacing: 0;
+    line-height: 1;
+    position: relative;
+
+    &:hover {
+      text-decoration: none !important;
+    }
+
+    &::after {
+      @include px2rem('width', 2px);
+      @include height(24px);
+
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      content: '';
+      background: #c0c7db;
+    }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &-em {
+    @include px2rem('width', 198px);
+
+    margin: 0 auto;
+    display: block;
+  }
+}
