@@ -3,7 +3,7 @@
 
 ## 案例演示
 
-[浏览器手机模式在线预览](https://output.jsbin.com/devewen)
+[浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
 
 <w-footer-wap centerLink="https://www.baidu.com" orderLink="https://www.qq.com" />
 
@@ -19,6 +19,7 @@
 |logoutAction|退出账号的接口|String|是|无|
 |domain|退出账号清除cookie的主域|String|是|evente.cn|
 |orgid|主办 id|String|Number|是|无|
+|useRouter|是否用 vue-router 跳转|String|Boolean|否|无|
 
 ### 方法
 
