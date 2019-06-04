@@ -46,6 +46,16 @@ $ yarn add emfooter
 />
 ```
 
+## 只有底部图片
+
+[浏览器手机模式在线预览](https://output.jsbin.com/jeferij)
+
+> 只需添加 `mode="none"` 即可。
+
+``` vue
+<w-footer-wap mode="none" />
+```
+
 ## API
 
 <table>
@@ -69,6 +79,7 @@ $ yarn add emfooter
     <tr><td>loginClose</td><td>登录弹框关闭</td><td>Function</td><td>否</td><td>() => {}</td></tr>
     <tr><td>loginSuccess</td><td>登录成功</td><td>Function</td><td>否</td><td>() => {}</td></tr>
     <tr><td>loginSuccess</td><td>登录成功</td><td>Function</td><td>否</td><td>() => {}</td></tr>
+    <tr><td>mode</td><td>底部的模式，可选: all, none 。 all展示主办图片和快捷入口，none只展示。 0.3.0 新增。</td><td>String</td><td>否</td><td>all</td></tr>
   </tbody>
 </table>
 
