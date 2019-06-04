@@ -30,7 +30,7 @@
 
 ## 只有底部图片
 
-[浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
+[浏览器手机模式在线预览](https://output.jsbin.com/jeferij)
 
 <w-footer-wap mode="none" />
 
