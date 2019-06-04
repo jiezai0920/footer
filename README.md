@@ -19,6 +19,7 @@ $ yarn add emfooter
 
 [浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
 
+``` vue
 <w-footer-wap
   centerLink="https://www.baidu.com"
   orderLink="https://www.qq.com"
@@ -27,11 +28,13 @@ $ yarn add emfooter
   :countrycodeAction="countrycodeAction"
   :sendAction="sendAction"
 />
+```
 
 ## 主办图片
 
 [浏览器手机模式在线预览](https://output.jsbin.com/cetuwip)
 
+``` vue
 <w-footer-wap
   centerLink="https://www.baidu.com"
   orderLink="https://www.qq.com"
@@ -41,6 +44,7 @@ $ yarn add emfooter
   :countrycodeAction="countrycodeAction"
   :sendAction="sendAction"
 />
+```
 
 ## API
 
