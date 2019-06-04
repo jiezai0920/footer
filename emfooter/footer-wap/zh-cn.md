@@ -1,7 +1,7 @@
 # 底部弹框(wap)
 > 基于Vue.js 的 前端业务组件。
 
-## 案例演示
+## 没有主办图片的
 
 [浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
 
@@ -9,6 +9,20 @@
   centerLink="https://www.baidu.com"
   orderLink="https://www.qq.com"
   orgid="100015"
+  :loginAction="loginAction"
+  :countrycodeAction="countrycodeAction"
+  :sendAction="sendAction"
+/>
+
+## 主办图片
+
+[浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
+
+<w-footer-wap
+  centerLink="https://www.baidu.com"
+  orderLink="https://www.qq.com"
+  orgid="100015"
+  orgImg="https://2img.evente.cn/7b/7b/81/a9b42253e54228e580d3b898be.jpg"
   :loginAction="loginAction"
   :countrycodeAction="countrycodeAction"
   :sendAction="sendAction"
