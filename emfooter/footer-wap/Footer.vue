@@ -1,16 +1,16 @@
 <template>
   <div class="wft-wap">
-    <div class="wft-wap-imgbox" v-if="orgImg">
+    <div class="wft-wap-imgbox" v-if="orgImg && isAll">
       <img class="wft-wap-img" :src="orgImg" alt="logo" />
     </div>
     <nav class="wft-wap-nav" :class="{
       ['wft-wap-nav-no']: !orgImg,
-    }">
+    }" v-if="isAll">
       <a class="wft-wap-link" href="javascript:;" @click="goCenter">{{centerText}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="goOrder">{{orderText}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="showConform">{{isLogined ? exitText : loginText}}</a>
     </nav>
-    <a href="https://www.evente.cn">
+    <a href="https://www.evente.cn" class="wft-wap-em-link">
       <img class="wft-wap-em" src="./style/em.png" alt="icon" />
     </a>
     <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }">确定退出当前账号吗？</modal-wap>
@@ -77,6 +77,10 @@ export default {
       type: Number,
       default: 99,
     },
+    mode: {
+      type: String,
+      default: 'all', // none
+    },
     // 登录相关 start
     zIndexLogin: {
       type: Number,
@@ -96,6 +100,11 @@ export default {
     sendAction: String,
     loginAction: String,
     // 登录相关 end
+  },
+  computed: {
+    isAll() {
+      return this.mode === 'all';
+    },
   },
   mounted() {
     this.getLoginStatus(this.orgid);

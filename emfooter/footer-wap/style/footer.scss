@@ -67,7 +67,8 @@
     }
   }
 
-  &-em {
+  &-em,
+  &-em-link {
     @include px2rem('width', 198px);
 
     margin: 0 auto;
