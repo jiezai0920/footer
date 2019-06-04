@@ -102,6 +102,7 @@ export default {
           },
         });
       } else {
+        console.log(this.centerLink || `${process.env.ACCOUNT || process.env.VUE_APP_ACCOUNT}wap/personal?org_id=${this.orgid}`, 111);
         window.location.href = this.centerLink || `${process.env.ACCOUNT || process.env.VUE_APP_ACCOUNT}wap/personal?org_id=${this.orgid}`;
       }
     },

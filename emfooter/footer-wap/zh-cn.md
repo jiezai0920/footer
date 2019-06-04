@@ -30,6 +30,7 @@
     <tr><td>logoutAction</td><td>退出账号的接口</td><td>String</td><td>是</td><td>无</td></tr>
     <tr><td>domain</td><td>退出账号清除cookie的主域</td><td>String</td><td>是</td><td>evente.cn</td></tr>
     <tr><td>orgid</td><td>主办 id</td><td>String|Number</td><td>是</td><td>无</td></tr>
+    <tr><td>orgImg</td><td>主办 定制白标</td><td>String</td><td>是</td><td>无</td></tr>
     <tr><td>useRouter</td><td>是否用 vue-router 跳转</td><td>Boolean</td><td>否</td><td>无</td></tr>
     <tr><td>loginClose</td><td>登录弹框关闭</td><td>Function</td><td>否</td><td>() => {}</td></tr>
     <tr><td>loginSuccess</td><td>登录成功</td><td>Function</td><td>否</td><td>() => {}</td></tr>
