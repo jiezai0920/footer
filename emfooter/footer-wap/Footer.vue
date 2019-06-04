@@ -67,10 +67,7 @@ export default {
       type: String,
       default: 'evente.cn',
     },
-    orgImg: {
-      type: String,
-      default: 'https://static2.evente.cn/static/img/logo2018v1.svg',
-    },
+    orgImg: String,
     orgid: [String, Number],
     centerLink: [String, Object],
     orderLink: [String, Object],
