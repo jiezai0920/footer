@@ -28,6 +28,10 @@
     @include px2rem('padding', 40px 0);
 
     text-align: center;
+
+    &-no {
+      @include px2rem('padding', 0 0 40px);
+    }
   }
 
   &-link {

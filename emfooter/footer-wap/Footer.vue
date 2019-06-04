@@ -1,15 +1,19 @@
 <template>
   <div class="wft-wap">
-    <div class="wft-wap-imgbox">
+    <div class="wft-wap-imgbox" v-if="orgImg">
       <img class="wft-wap-img" :src="orgImg" alt="logo" />
     </div>
-    <nav class="wft-wap-nav">
+    <nav class="wft-wap-nav" :class="{
+      ['wft-wap-nav-no']: !orgImg,
+    }">
       <a class="wft-wap-link" href="javascript:;" @click="goCenter">{{centerText}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="goOrder">{{orderText}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="showConform">{{isLogined ? exitText : loginText}}</a>
     </nav>
-    <img class="wft-wap-em" src="./style/em.png" alt="icon" />
-    <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit">确定退出当前账号吗？</modal-wap>
+    <a href="https://www.evente.cn">
+      <img class="wft-wap-em" src="./style/em.png" alt="icon" />
+    </a>
+    <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }">确定退出当前账号吗？</modal-wap>
     <toast-wap ref="toast"></toast-wap>
     <w-login
       :domain="domain"
@@ -20,6 +24,7 @@
       :countrycodeAction="countrycodeAction"
       :sendAction="sendAction"
       :loginAction="loginAction"
+      :style="{zIndex: zIndexLogin}"
     ></w-login>
   </div>
 </template>
@@ -70,7 +75,16 @@ export default {
     centerLink: [String, Object],
     orderLink: [String, Object],
     logoutAction: String,
+    env: Object,
+    zIndexModal: {
+      type: Number,
+      default: 99,
+    },
     // 登录相关 start
+    zIndexLogin: {
+      type: Number,
+      default: 99,
+    },
     // 登录弹框 关闭
     loginClose: {
       type: Function,
@@ -102,7 +116,7 @@ export default {
           },
         });
       } else {
-        window.location.href = this.centerLink || `${process.env.ACCOUNT || process.env.VUE_APP_ACCOUNT}wap/personal?org_id=${this.orgid}`;
+        window.location.href = this.centerLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/personal?org_id=${this.orgid}`;
       }
     },
     goOrder() {
@@ -114,7 +128,7 @@ export default {
           },
         });
       } else {
-        window.location.href = this.orderLink || `${process.env.ACCOUNT || process.env.VUE_APP_ACCOUNT}wap/orderlist?org_id=${this.orgid}`;
+        window.location.href = this.orderLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/orderlist?org_id=${this.orgid}`;
       }
     },
     showConform() {
@@ -138,6 +152,7 @@ export default {
         onSuccess: (res) => {
           if (res.code === 10000) {
             logoutpc(res, this.orgid, this, () => {
+              this.getLoginStatus(this.orgid);
               this.$emit('logout');
             });
           } else {
