@@ -16,7 +16,7 @@
 
 ## 主办图片
 
-[浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
+[浏览器手机模式在线预览](https://output.jsbin.com/cetuwip)
 
 <w-footer-wap
   centerLink="https://www.baidu.com"
