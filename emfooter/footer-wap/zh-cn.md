@@ -28,6 +28,12 @@
   :sendAction="sendAction"
 />
 
+## 只有底部图片
+
+[浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
+
+<w-footer-wap mode="none" />
+
 ## API
 
 <div style="width: 100%; overflow: auto">
@@ -52,6 +58,7 @@
     <tr><td>loginClose</td><td>登录弹框关闭</td><td>Function</td><td>否</td><td>() => {}</td></tr>
     <tr><td>loginSuccess</td><td>登录成功</td><td>Function</td><td>否</td><td>() => {}</td></tr>
     <tr><td>loginSuccess</td><td>登录成功</td><td>Function</td><td>否</td><td>() => {}</td></tr>
+    <tr><td>mode</td><td>底部的模式，可选: all, none 。 all展示主办图片和快捷入口，none只展示。 0.3.0 新增。</td><td>String</td><td>否</td><td>all</td></tr>
   </tbody>
   </table>
 </div>
@@ -168,6 +175,10 @@ export default {
 .html .page,
 .content:not(.custom) {
   padding: 0 !important;
+}
+
+.html .sidebar {
+  width: 260px;
 }
 
 </style>
