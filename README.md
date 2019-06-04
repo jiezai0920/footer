@@ -19,6 +19,8 @@ $ yarn add emfooter
 
 [浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
 
+![只有底部图片](./img/img1.png)
+
 ``` vue
 <w-footer-wap
   centerLink="https://www.baidu.com"
@@ -33,6 +35,8 @@ $ yarn add emfooter
 ## 主办图片
 
 [浏览器手机模式在线预览](https://output.jsbin.com/cetuwip)
+
+![只有底部图片](./img/img2.png)
 
 ``` vue
 <w-footer-wap
@@ -51,6 +55,8 @@ $ yarn add emfooter
 [浏览器手机模式在线预览](https://output.jsbin.com/jeferij)
 
 > 只需添加 `mode="none"` 即可。
+
+![只有底部图片](./img/img3.png)
 
 ``` vue
 <w-footer-wap mode="none" />
