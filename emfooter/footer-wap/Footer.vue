@@ -103,15 +103,20 @@ export default {
       return this.mode === 'all';
     },
     newDomain() {
+      let domain = '';
+      const host = 'evente.cn';
+
       if (this.env.NODE_ENV === 'production') {
-        this.domain = 'evente.cn';
+        domain = host;
       } else if (this.env.NODE_ENV === 'labing') {
-        this.domain = 'lab.evente.cn';
+        domain = `lab.${host}`;
       } else if (this.env.NODE_ENV === 'testing') {
-        this.domain = 'inner.evente.cn';
+        domain = `inner.${host}`;
       } else {
-        this.domain = '';
+        domain = '';
       }
+
+      return domain;
     },
   },
   mounted() {
