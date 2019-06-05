@@ -75,7 +75,7 @@ $ yarn add emfooter
     <tr><td>orderLink</td><td>我的订单链接</td><td>String|Number</td><td>否</td><td>wap/orderlist</td></tr>
     <tr><td>exitText</td><td>退出账号文案</td><td>String</td><td>是</td><td>退出账号</td></tr>
     <tr><td>logoutAction</td><td>退出账号的接口</td><td>String</td><td>是</td><td>无</td></tr>
-    <tr><td>domain</td><td>退出账号清除cookie的主域</td><td>String</td><td>是</td><td>根据 env 分环境判断</td></tr>
+    <tr><td>domain</td><td>退出账号清除cookie的主域</td><td>String</td><td>是</td><td>根据 env 的 NODE_ENV ，对不同环境进行判断</td></tr>
     <tr><td>env</td><td>环境(process.env)用于连接跳转</td><td>Object</td><td>是</td><td>无</td></tr>
     <tr><td>zIndexModal</td><td>确认弹框的层级</td><td>Number</td><td>是</td><td>99</td></tr>
     <tr><td>zIndexLogin</td><td>登录弹框的层级</td><td>Number</td><td>是</td><td>99</td></tr>
