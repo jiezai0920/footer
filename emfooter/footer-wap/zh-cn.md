@@ -36,7 +36,7 @@
 
 ## 白色底部图片
 
-[浏览器手机模式在线预览](https://output.jsbin.com/jeferij)
+[浏览器手机模式在线预览](https://output.jsbin.com/meponov)
 
 <div style="background: #999">
   <w-footer-wap mode="none" logoColor="white" />
