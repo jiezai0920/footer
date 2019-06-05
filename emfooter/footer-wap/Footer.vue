@@ -35,6 +35,7 @@ import login from 'emlogin';
 import emCookie from 'em-cookie';
 import ajax from '../tools/ajax';
 import logoutpc from '../tools/logoutpc';
+import { hasOwn } from '../tools/o';
 
 export default {
   name: 'WFooterWap',
@@ -104,19 +105,21 @@ export default {
     },
     newDomain() {
       let domain = '';
-      const host = 'evente.cn';
 
-      if (this.env.NODE_ENV === 'production') {
-        domain = host;
-      } else if (this.env.NODE_ENV === 'labing') {
-        domain = `lab.${host}`;
-      } else if (this.env.NODE_ENV === 'testing') {
-        domain = `inner.${host}`;
-      } else {
-        domain = '';
+      if (hasOwn(this.env, 'NODE_ENV')) {
+        const host = 'evente.cn';
+        if (this.env.NODE_ENV === 'production') {
+          domain = host;
+        } else if (this.env.NODE_ENV === 'labing') {
+          domain = `lab.${host}`;
+        } else if (this.env.NODE_ENV === 'testing') {
+          domain = `inner.${host}`;
+        } else {
+          domain = '';
+        }
       }
 
-      return domain;
+      return this.domain || domain;
     },
   },
   mounted() {
