@@ -16,7 +16,7 @@
     <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }">确定退出当前账号吗？</modal-wap>
     <toast-wap ref="toast"></toast-wap>
     <w-login
-      :domain="domain"
+      :domain="newDomain"
       :show="loginStatus"
       :close="loginCloseFn"
       :success="loginSucFn"
@@ -63,10 +63,7 @@ export default {
       default: '登录账号',
     },
     useRouter: Boolean,
-    domain: { // 是否cookie存储加 domain
-      type: String,
-      default: 'evente.cn',
-    },
+    domain: String,
     orgImg: String,
     orgid: [String, Number],
     centerLink: [String, Object],
@@ -104,6 +101,17 @@ export default {
   computed: {
     isAll() {
       return this.mode === 'all';
+    },
+    newDomain() {
+      if (this.env.NODE_ENV === 'production') {
+        this.domain = 'evente.cn';
+      } else if (this.env.NODE_ENV === 'labing') {
+        this.domain = 'lab.evente.cn';
+      } else if (this.env.NODE_ENV === 'testing') {
+        this.domain = 'inner.evente.cn';
+      } else {
+        this.domain = '';
+      }
     },
   },
   mounted() {

@@ -30,7 +30,7 @@ const afterLogin = (callbackUrl, inow, self, callback) => {
 
 export default (result, orgId, self, callback) => {
   afterLogin(result.data.url_list, result.data.url_list.length - 1, self, () => {
-    let domainStr = self.domain || '';
+    let domainStr = self.newDomain || '';
 
     setTimeout(() => {
       window.$cookie.remove(`Authorization?org_id=${orgId}`, '/', domainStr);
