@@ -84,7 +84,8 @@ $ yarn add emfooter
     <tr><td>useRouter</td><td>是否用 vue-router 跳转</td><td>Boolean</td><td>否</td><td>无</td></tr>
     <tr><td>loginClose</td><td>登录弹框关闭</td><td>Function</td><td>否</td><td>() => {}</td></tr>
     <tr><td>loginSuccess</td><td>登录成功</td><td>Function</td><td>否</td><td>() => {}</td></tr>
-    <tr><td>mode</td><td>底部的模式，可选: all, none 。 all展示主办图片和快捷入口，none只展示。 0.3.0 新增。</td><td>String</td><td>否</td><td>all</td></tr>
+    <tr><td>mode</td><td>底部的模式，可选: all, none 。 all展示主办图片和快捷入口，none只展示。 <code>0.3.0 新增</code>。</td><td>String</td><td>否</td><td>all</td></tr>
+    <tr><td>logoColor</td><td>活动易提供技术支持的颜色设置，可选值： white | gray 。<code>0.4.0 新增</code>。</td><td>String</td><td>否</td><td>gray</td></tr>
   </tbody>
 </table>
 

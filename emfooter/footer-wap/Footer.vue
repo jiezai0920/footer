@@ -11,7 +11,7 @@
       <a class="wft-wap-link" href="javascript:;" @click="showConform">{{isLogined ? exitText : loginText}}</a>
     </nav>
     <a href="https://www.evente.cn" class="wft-wap-em-link">
-      <img class="wft-wap-em" src="./style/em.png" alt="icon" />
+      <img class="wft-wap-em" :src="`http://static2.evente.cn/static/img/emfooter-logo-${logoColor}.png`" alt="icon" />
     </a>
     <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }">确定退出当前账号吗？</modal-wap>
     <toast-wap ref="toast"></toast-wap>
@@ -64,6 +64,10 @@ export default {
       default: '登录账号',
     },
     useRouter: Boolean,
+    logoColor: {
+      type: String,
+      default: 'gray',
+    },
     domain: String,
     orgImg: String,
     orgid: [String, Number],
@@ -105,8 +109,7 @@ export default {
     },
     newDomain() {
       let domain = '';
-
-      if (hasOwn(this.env, 'NODE_ENV')) {
+      if (this.env && hasOwn(this.env, 'NODE_ENV')) {
         const host = 'evente.cn';
         if (this.env.NODE_ENV === 'production') {
           domain = host;
