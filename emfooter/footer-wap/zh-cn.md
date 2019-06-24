@@ -5,7 +5,7 @@
 
 > 0.5.0 新增。添加属性 <code>complaint</code> 即可。
 
-[浏览器手机模式在线预览](https://output.jsbin.com/meponov)
+[浏览器手机模式在线预览](https://output.jsbin.com/belehox)
 
 <div style="background: #999">
   <w-footer-wap
