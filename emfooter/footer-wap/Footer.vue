@@ -13,6 +13,9 @@
     <a href="https://www.evente.cn" class="wft-wap-em-link">
       <img class="wft-wap-em" :src="`http://static2.evente.cn/static/img/emfooter-logo-${logoColor}.png`" alt="icon" />
     </a>
+    <a class="wft-wap-complaint" :class="{
+      ['wft-wap-complaint-white']: logoColor === 'white'
+    }" href="javascript:;" v-if="complaint" @click="goComplaint">投诉</a>
     <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }">确定退出当前账号吗？</modal-wap>
     <toast-wap ref="toast"></toast-wap>
     <w-login
@@ -64,6 +67,7 @@ export default {
       default: '登录账号',
     },
     useRouter: Boolean,
+    complaint: Boolean,
     logoColor: {
       type: String,
       default: 'gray',
@@ -73,6 +77,7 @@ export default {
     orgid: [String, Number],
     centerLink: [String, Object],
     orderLink: [String, Object],
+    complaintLink: [String, Object],
     logoutAction: String,
     env: Object,
     zIndexModal: {
@@ -154,6 +159,15 @@ export default {
         });
       } else {
         window.location.href = this.orderLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/orderlist?org_id=${this.orgid}`;
+      }
+    },
+    goComplaint() {
+      if (this.useRouter) {
+        this.$router.push(this.complaintLink || {
+          name: 'Complaint',
+        });
+      } else {
+        window.location.href = this.complaintLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}/wap/complaint`;
       }
     },
     showConform() {
