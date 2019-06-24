@@ -16,7 +16,7 @@
   }
 
   &-img {
-    width: auto;
+    width: 100%;
     height: auto;
     position: absolute;
     bottom: 0;
@@ -73,5 +73,27 @@
 
     margin: 0 auto;
     display: block;
+  }
+
+  &-complaint {
+    font-family: 'PingFangSC-Regular';
+    font-size: 12px;
+    color: #596075;
+    letter-spacing: 0;
+    line-height: 1;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+
+    @include px2rem('width', 96px);
+    @include px2rem('margin-top', 40px);
+
+    &:hover {
+      text-decoration: none !important;
+    }
+
+    &-white {
+      color: #fff;
+    }
   }
 }

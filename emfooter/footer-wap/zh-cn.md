@@ -1,6 +1,32 @@
 # 底部弹框(wap)
 > 基于Vue.js 的 前端业务组件。
 
+## 投诉
+
+> 0.5.0 新增。添加属性 <code>complaint</code> 即可。
+
+[浏览器手机模式在线预览](https://output.jsbin.com/meponov)
+
+<div style="background: #999">
+  <w-footer-wap
+    mode="none"
+    logoColor="white"
+    complaint
+    complaintLink="https://www.evente.cn"
+  />
+</div>
+
+<w-footer-wap
+  centerLink="https://www.baidu.com"
+  orderLink="https://www.qq.com"
+  orgid="100015"
+  :loginAction="loginAction"
+  :countrycodeAction="countrycodeAction"
+  :sendAction="sendAction"
+  complaint
+  complaintLink="https://www.evente.cn"
+/>
+
 ## 没有主办图片的
 
 [浏览器手机模式在线预览](https://output.jsbin.com/zecepul)
@@ -67,6 +93,8 @@
     <tr><td>loginSuccess</td><td>登录成功</td><td>Function</td><td>否</td><td>() => {}</td></tr>
     <tr><td>mode</td><td>底部的模式，可选: all, none 。 all展示主办图片和快捷入口，none只展示。 <code>0.3.0 新增</code>。</td><td>String</td><td>否</td><td>all</td></tr>
     <tr><td>logoColor</td><td>活动易提供技术支持的颜色设置，可选值： white | gray 。<code>0.4.0 新增</code>。</td><td>String</td><td>否</td><td>gray</td></tr>
+    <tr><td>complaint</td><td>是否显示投诉入口 <code>0.5.0 新增</code> 。</td><td>Boolean</td><td>否</td><td>无</td></tr>
+    <tr><td>complaintLink</td><td>投诉链接定义 <code>0.5.0 新增</code> 。</td><td>String</td><td>否</td><td>无</td></tr>
   </tbody>
   </table>
 </div>
