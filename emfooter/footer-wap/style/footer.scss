@@ -43,6 +43,7 @@
     letter-spacing: 0;
     line-height: 1;
     position: relative;
+    text-decoration: none !important;
 
     &:hover {
       text-decoration: none !important;
@@ -84,8 +85,9 @@
     display: block;
     margin: 0 auto;
     text-align: center;
+    text-decoration: none !important;
 
-    @include px2rem('width', 96px);
+    @include px2rem('width', 120px);
     @include px2rem('margin-top', 40px);
 
     &:hover {
