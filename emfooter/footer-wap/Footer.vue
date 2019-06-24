@@ -167,7 +167,7 @@ export default {
           name: 'Complaint',
         });
       } else {
-        window.location.href = this.complaintLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}/wap/complaint`;
+        window.location.href = this.complaintLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/complaint`;
       }
     },
     showConform() {
