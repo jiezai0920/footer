@@ -66,6 +66,8 @@ export default {
       type: String,
       default: '登录账号',
     },
+    productId: [Number, String],
+    productType: String,
     useRouter: Boolean,
     complaint: Boolean,
     logoColor: {
@@ -163,11 +165,19 @@ export default {
     },
     goComplaint() {
       if (this.useRouter) {
+        const query = { org_id: this.orgid };
+        if (this.productId) {
+          query.product_id = this.productId;
+        }
+        if (this.productType) {
+          query.product_type = this.productType;
+        }
         this.$router.push(this.complaintLink || {
           name: 'Complaint',
+          query,
         });
       } else {
-        window.location.href = this.complaintLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/complaint`;
+        window.location.href = this.complaintLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/complaint?org_id=${this.orgid}${this.productId ? `&product_id=${this.productId}` : ''}${this.productType ? `&product_type=${this.productType}` : ''}`;
       }
     },
     showConform() {
