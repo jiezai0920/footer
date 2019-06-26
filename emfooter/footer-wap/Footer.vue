@@ -67,7 +67,7 @@ export default {
       default: '登录账号',
     },
     productId: [Number, String],
-    productType: [Number, String],
+    productType: String,
     useRouter: Boolean,
     complaint: Boolean,
     logoColor: {
