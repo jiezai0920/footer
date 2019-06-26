@@ -76,6 +76,7 @@ export default {
     },
     domain: String,
     orgImg: String,
+    userId: String,
     orgid: [String, Number],
     centerLink: [String, Object],
     orderLink: [String, Object],
@@ -172,12 +173,15 @@ export default {
         if (this.productType) {
           query.product_type = this.productType;
         }
+        if (this.userId) {
+          query.user_id = this.userId;
+        }
         this.$router.push(this.complaintLink || {
           name: 'Complaint',
           query,
         });
       } else {
-        window.location.href = this.complaintLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/complaint?org_id=${this.orgid}${this.productId ? `&product_id=${this.productId}` : ''}${this.productType ? `&product_type=${this.productType}` : ''}`;
+        window.location.href = this.complaintLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/complaint?org_id=${this.orgid}${this.productId ? `&product_id=${this.productId}` : ''}${this.productType ? `&product_type=${this.productType}` : ''}${this.userId ? `&user_id=${this.userId}` : ''}`;
       }
     },
     showConform() {
