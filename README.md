@@ -114,6 +114,9 @@ $ yarn add emfooter
     <tr><td>logoColor</td><td>活动易提供技术支持的颜色设置，可选值： white | gray 。<code>0.4.0 新增</code>。</td><td>String</td><td>否</td><td>gray</td></tr>
     <tr><td>complaint</td><td>是否显示投诉入口 <code>0.5.0 新增</code> 。</td><td>Boolean</td><td>否</td><td>无</td></tr>
     <tr><td>complaintLink</td><td>投诉链接定义 <code>0.5.0 新增</code> 。</td><td>String</td><td>否</td><td>无</td></tr>
+    <tr><td>productId</td><td>产品 ID <code>0.6.0 新增</code> 。</td><td>String | Number</td><td>否</td><td>无</td></tr>
+    <tr><td>productType</td><td>产品类型 <code>0.6.0 新增</code> 。</td><td>String</td><td>否</td><td>无</td></tr>
+    <tr><td>userId</td><td>用户 ID <code>0.7.0 新增</code> 。</td><td>String</td><td>否</td><td>无</td></tr>
   </tbody>
 </table>
 
