@@ -16,9 +16,10 @@
     <a class="wft-wap-complaint" :class="{
       ['wft-wap-complaint-white']: logoColor === 'white'
     }" href="javascript:;" v-if="complaint" @click="goComplaint">投诉</a>
-    <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }">确定退出当前账号吗？</modal-wap>
-    <toast-wap ref="toast"></toast-wap>
+    <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }" v-if="isAll">确定退出当前账号吗？</modal-wap>
+    <toast-wap ref="toast" v-if="isAll"></toast-wap>
     <w-login
+      v-if="isAll"
       :domain="newDomain"
       :show="loginStatus"
       :close="loginCloseFn"
