@@ -117,6 +117,8 @@ $ yarn add emfooter
     <tr><td>productId</td><td>产品 ID <code>0.6.0 新增</code> 。</td><td>String | Number</td><td>否</td><td>无</td></tr>
     <tr><td>productType</td><td>产品类型 <code>0.6.0 新增</code> 。</td><td>String</td><td>否</td><td>无</td></tr>
     <tr><td>userId</td><td>用户 ID <code>0.7.0 新增</code> 。</td><td>String</td><td>否</td><td>无</td></tr>
+    <tr><td>modalTitle</td><td>退出文案提示 <code>1.0.0 新增</code> 。</td><td>String</td><td>否</td><td>提示</td></tr>
+    <tr><td>modalContent</td><td>退出内容文案提示 <code>1.0.0 新增</code> 。</td><td>String</td><td>否</td><td>确定退出当前账号吗？</td></tr>
   </tbody>
 </table>
 
