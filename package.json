@@ -145,7 +145,7 @@
     "lint-staged"
   ],
   "dependencies": {
-    "@fe6/modal": "^0.1.9",
+    "@fe6/modal": "^1.0.0",
     "@fe6/toast": "^0.2.0",
     "emlogin": "^0.3.6"
   }
