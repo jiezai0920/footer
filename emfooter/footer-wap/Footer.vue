@@ -11,7 +11,7 @@
       <a class="wft-wap-link" href="javascript:;" @click="showConform">{{isLogined ? exitText : loginText}}</a>
     </nav>
     <a href="https://www.evente.cn" class="wft-wap-em-link">
-      <img class="wft-wap-em" :src="`http://static2.evente.cn/static/img/emfooter-logo-${logoColor}.png`" alt="icon" />
+      <img class="wft-wap-em" :src="`//static2.evente.cn/static/img/emfooter-logo-${logoColor}.png`" alt="icon" />
     </a>
     <a class="wft-wap-complaint" :class="{
       ['wft-wap-complaint-white']: logoColor === 'white'
