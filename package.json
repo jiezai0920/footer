@@ -147,6 +147,6 @@
   "dependencies": {
     "@fe6/modal": "^1.0.0",
     "@fe6/toast": "^0.2.0",
-    "emlogin": "^0.3.6"
+    "emlogin": "^0.7.3"
   }
 }
