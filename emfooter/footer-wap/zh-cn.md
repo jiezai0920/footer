@@ -24,6 +24,7 @@
   :countrycodeAction="countrycodeAction"
   :sendAction="sendAction"
   complaint
+  lang="en_US"
   complaintLink="https://www.evente.cn"
 />
 

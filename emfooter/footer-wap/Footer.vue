@@ -8,6 +8,7 @@
     }" v-if="isAll">
       <a class="wft-wap-link" href="javascript:;" @click="goCenter">{{centerText}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="goOrder">{{orderText}}</a>
+      <a class="wft-wap-link" href="javascript:;" @click="languageFun">{{language}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="showConform">{{isLogined ? exitText : loginText}}</a>
     </nav>
     <a href="https://www.evente.cn" class="wft-wap-em-link">
@@ -63,6 +64,8 @@ export default {
       confirmStatus: false,
       loginStatus: false,
       isLogined: false,
+      language: '中文',
+      isChina: false,
     };
   },
   props: {
@@ -180,6 +183,7 @@ export default {
       default: '确定',
     },
     // 登录相关 end
+    langHandle: Function,
   },
   computed: {
     isAll() {
@@ -205,6 +209,10 @@ export default {
   },
   mounted() {
     this.getLoginStatus(this.orgid);
+
+    this.lang = this.lang || window.$cookie.get('locale') || 'zh_CN';
+    this.isChina = this.lang === 'zh_CN';
+    this.language = this.isChina ? 'English' : '中文';
   },
   methods: {
     getLoginStatus(orgid) {
@@ -308,6 +316,21 @@ export default {
       this.loginClose();
     },
     // 登录相关 end
+    // // 语言
+    languageFun() {
+      const locale = this.isChina ? 'en_US' : 'zh_CN';
+      this.setLocale(locale);
+      setTimeout(() => {
+        if (this.langHandle) {
+          this.langHandle();
+        } else {
+          window.location.reload();
+        }
+      }, 100);
+    },
+    setLocale(locale) {
+      window.$cookie.set('locale', locale, '1m', '/', this.newDomain || '');
+    },
   },
   watch: {
     orgid(val) {
