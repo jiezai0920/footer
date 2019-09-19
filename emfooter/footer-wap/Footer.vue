@@ -17,7 +17,7 @@
     <a class="wft-wap-complaint" :class="{
       ['wft-wap-complaint-white']: logoColor === 'white'
     }" href="javascript:;" v-if="complaint" @click="goComplaint">投诉</a>
-    <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }" v-if="isAll" :title="modalTitle">{{modalContent}}</modal-wap>
+    <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }" v-if="isAll" :title="modalTitle" :okText="okText" :cancelText="cancelText">{{modalContent}}</modal-wap>
     <toast-wap ref="toast" v-if="isAll"></toast-wap>
     <w-login-wap
       v-if="isAll"
@@ -181,6 +181,14 @@ export default {
     btnText: {
       type: String,
       default: '确定',
+    },
+    okText: {
+      type: String,
+      default: '确定',
+    },
+    cancelText: {
+      type: String,
+      default: '取消',
     },
     // 登录相关 end
     langHandle: Function,
