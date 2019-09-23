@@ -190,6 +190,10 @@ export default {
       type: String,
       default: '取消',
     },
+    isLogin: {
+      type: Boolean,
+      default: false,
+    },
     // 登录相关 end
     langHandle: Function,
   },
@@ -224,7 +228,7 @@ export default {
   },
   methods: {
     getLoginStatus(orgid) {
-      this.isLogined = !!window.$cookie.get(`Authorization?org_id=${orgid}`);
+      this.isLogined = !!window.$cookie.get(`Authorization?org_id=${orgid}`) || this.isLogin;
     },
     goCenter() {
       if (this.useRouter) {
@@ -343,6 +347,9 @@ export default {
   watch: {
     orgid(val) {
       this.getLoginStatus(val);
+    },
+    isLogin() {
+      this.getLoginStatus(this.orgid);
     },
   },
   components: {
