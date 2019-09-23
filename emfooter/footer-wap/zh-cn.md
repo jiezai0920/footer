@@ -24,6 +24,7 @@
   :countrycodeAction="countrycodeAction"
   :sendAction="sendAction"
   complaint
+  :isLogin="true"
   lang="en_US"
   complaintLink="https://www.evente.cn"
 />
@@ -101,6 +102,7 @@
     <tr><td>userId</td><td>用户 ID <code>0.7.0 新增</code> 。</td><td>String</td><td>否</td><td>无</td></tr>
     <tr><td>modalTitle</td><td>退出文案提示 <code>1.0.0 新增</code> 。</td><td>String</td><td>否</td><td>提示</td></tr>
     <tr><td>modalContent</td><td>退出内容文案提示 <code>1.0.0 新增</code> 。</td><td>String</td><td>否</td><td>确定退出当前账号吗？</td></tr>
+    <tr><td>isLogin</td><td>是否登录 <code>1.0.0 新增</code> 。</td><td>Boolean</td><td>否</td><td>false</td></tr>
   </tbody>
   </table>
 </div>
