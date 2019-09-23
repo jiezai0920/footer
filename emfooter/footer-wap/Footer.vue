@@ -295,6 +295,7 @@ export default {
         onSuccess: (res) => {
           if (res.code === 10000) {
             logoutpc(res, this.orgid, this, () => {
+              this.isLogin = false;
               this.getLoginStatus(this.orgid);
               this.$emit('logout');
             });
