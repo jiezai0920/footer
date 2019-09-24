@@ -66,6 +66,7 @@ export default {
       isLogined: false,
       language: '中文',
       isChina: false,
+      loginState: false,
     };
   },
   props: {
@@ -220,6 +221,7 @@ export default {
     },
   },
   mounted() {
+    this.loginState = this.isLogin;
     this.getLoginStatus(this.orgid);
 
     this.lang = this.lang || window.$cookie.get('locale') || 'zh_CN';
@@ -228,7 +230,7 @@ export default {
   },
   methods: {
     getLoginStatus(orgid) {
-      this.isLogined = !!window.$cookie.get(`Authorization?org_id=${orgid}`) || this.isLogin;
+      this.isLogined = !!window.$cookie.get(`Authorization?org_id=${orgid}`) || this.loginState;
     },
     goCenter() {
       if (this.useRouter) {
@@ -295,7 +297,6 @@ export default {
         onSuccess: (res) => {
           if (res.code === 10000) {
             logoutpc(res, this.orgid, this, () => {
-              this.isLogin = false;
               this.getLoginStatus(this.orgid);
               this.$emit('logout');
             });
@@ -349,7 +350,8 @@ export default {
     orgid(val) {
       this.getLoginStatus(val);
     },
-    isLogin() {
+    isLogin(val) {
+      this.loginState = val;
       this.getLoginStatus(this.orgid);
     },
   },

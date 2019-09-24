@@ -13,6 +13,7 @@
     logoColor="white"
     complaint
     complaintLink="https://www.evente.cn"
+    :isLogin="isLogin"
   />
 </div>
 
@@ -24,10 +25,13 @@
   :countrycodeAction="countrycodeAction"
   :sendAction="sendAction"
   complaint
-  :isLogin="true"
+  :isLogin="isLogin"
   lang="en_US"
   complaintLink="https://www.evente.cn"
 />
+<div @click="logot">退出</div>
+<div @click="login">登录</div>
+
 
 ## 没有主办图片的
 
@@ -124,6 +128,7 @@ export default {
       loginAction: 'https://www.easy-mock.com/mock/5ab386ecca15e11ded65b593/chinese/login',
       countrycodeAction: 'https://www.easy-mock.com/mock/5ab386ecca15e11ded65b593/chinese/countrycode',
       sendAction: 'https://www.easy-mock.com/mock/5ab386ecca15e11ded65b593/chinese/smssend',
+      isLogin: false,
     }
   },
   components: {
@@ -138,6 +143,12 @@ export default {
   methods: {
     success(res) {
       console.log(res, '登录');
+    },
+    logot() {
+      this.isLogin = false;
+    },
+    login() {
+      this.isLogin = true;
     },
   },
 }
