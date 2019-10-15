@@ -233,27 +233,35 @@ export default {
       this.isLogined = !!window.$cookie.get(`Authorization?org_id=${orgid}`) || this.loginState;
     },
     goCenter() {
-      if (this.useRouter) {
-        this.$router.push(this.centerLink || {
-          name: 'Personal',
-          query: {
-            org_id: this.orgid,
-          },
-        });
+      if (this.isLogined) {
+        if (this.useRouter) {
+          this.$router.push(this.centerLink || {
+            name: 'Personal',
+            query: {
+              org_id: this.orgid,
+            },
+          });
+        } else {
+          window.location.href = this.centerLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/personal?org_id=${this.orgid}`;
+        }
       } else {
-        window.location.href = this.centerLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/personal?org_id=${this.orgid}`;
+        this.showLoginFn();
       }
     },
     goOrder() {
-      if (this.useRouter) {
-        this.$router.push(this.orderLink || {
-          name: 'OrderList',
-          query: {
-            org_id: this.orgid,
-          },
-        });
+      if (this.isLogined) {
+        if (this.useRouter) {
+          this.$router.push(this.orderLink || {
+            name: 'OrderList',
+            query: {
+              org_id: this.orgid,
+            },
+          });
+        } else {
+          window.location.href = this.orderLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/orderlist?org_id=${this.orgid}`;
+        }
       } else {
-        window.location.href = this.orderLink || `${this.env.ACCOUNT || this.env.VUE_APP_ACCOUNT}wap/orderlist?org_id=${this.orgid}`;
+        this.showLoginFn();
       }
     },
     goComplaint() {
@@ -359,7 +367,7 @@ export default {
   components: {
     ModalWap: modal.ModalWap,
     ToastWap: toast.ToastWap,
-    WLogin: login.WapTem,
+    WLoginWap: login.WapTem,
     emCookie,
   },
 };
