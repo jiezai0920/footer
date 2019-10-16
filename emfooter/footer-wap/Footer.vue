@@ -67,6 +67,7 @@ export default {
       language: '中文',
       isChina: false,
       loginState: false,
+      clickFlag: '',
     };
   },
   props: {
@@ -246,6 +247,7 @@ export default {
         }
       } else {
         this.showLoginFn();
+        this.clickFlag = 'goCenter';
       }
     },
     goOrder() {
@@ -262,6 +264,7 @@ export default {
         }
       } else {
         this.showLoginFn();
+        this.clickFlag = 'goOrder';
       }
     },
     goComplaint() {
@@ -333,6 +336,13 @@ export default {
     loginSucFn() {
       this.getLoginStatus(this.orgid);
       this.loginSuccess();
+      if (this.clickFlag === 'goCenter') {
+        this.goCenter();
+      }
+      if (this.clickFlag === 'goOrder') {
+        this.goOrder();
+      }
+      this.clickFlag = '';
     },
     loginCloseFn() {
       this.loginStatus = false;
