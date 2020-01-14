@@ -8,7 +8,7 @@
     }" v-if="isAll">
       <a class="wft-wap-link" href="javascript:;" @click="goCenter">{{centerText}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="goOrder">{{orderText}}</a>
-      <a class="wft-wap-link" href="javascript:;" @click="languageFun">{{language}}</a>
+      <a v-if="isShowLang" class="wft-wap-link" href="javascript:;" @click="languageFun">{{language}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="showConform">{{isLogined ? exitText : loginText}}</a>
     </nav>
     <a href="https://www.evente.cn" class="wft-wap-em-link">
@@ -19,7 +19,7 @@
     }" href="javascript:;" v-if="complaint" @click="goComplaint">投诉</a>
     <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }" v-if="isAll" :title="modalTitle" :okText="okText" :cancelText="cancelText">{{modalContent}}</modal-wap>
     <toast-wap ref="toast" v-if="isAll"></toast-wap>
-    <w-login-wap
+    <w-login-wechat
       v-if="isAll"
       style="z-index:101;"
       :domain="newDomain"
@@ -44,8 +44,10 @@
       :smsPlaceholder="smsPlaceholder"
       :telPlaceholder="telPlaceholder"
       :desc="desc"
-    ></w-login-wap>
-
+      :oauthkey="oauthKey"
+      :oauthType="oauthType"
+      :wechatUrl="wechatUrl"
+    ></w-login-wechat>
   </div>
 </template>
 <script>
@@ -198,6 +200,19 @@ export default {
     },
     // 登录相关 end
     langHandle: Function,
+    oauthKey: {
+      type: String,
+    },
+    oauthType: {
+      type: String,
+    },
+    wechatUrl: {
+      type: String,
+    },
+    isShowLang: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     isAll() {
@@ -377,7 +392,7 @@ export default {
   components: {
     ModalWap: modal.ModalWap,
     ToastWap: toast.ToastWap,
-    WLoginWap: login.WapTem,
+    WLoginWechat: login.WapWechat,
     emCookie,
   },
 };
