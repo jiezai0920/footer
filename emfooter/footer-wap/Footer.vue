@@ -8,7 +8,7 @@
     }" v-if="isAll">
       <a class="wft-wap-link" href="javascript:;" @click="goCenter">{{centerText}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="goOrder">{{orderText}}</a>
-      <a class="wft-wap-link" href="javascript:;" @click="languageFun">{{language}}</a>
+      <a v-if="isShowLang" class="wft-wap-link" href="javascript:;" @click="languageFun">{{language}}</a>
       <a class="wft-wap-link" href="javascript:;" @click="showConform">{{isLogined ? exitText : loginText}}</a>
     </nav>
     <a href="https://www.evente.cn" class="wft-wap-em-link">
@@ -208,6 +208,10 @@ export default {
     },
     wechatUrl: {
       type: String,
+    },
+    isShowLang: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
