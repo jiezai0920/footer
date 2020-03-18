@@ -22,6 +22,7 @@
     <w-login-wechat
       v-if="isAll"
       style="z-index:101;"
+      :lang="lang"
       :domain="newDomain"
       :show="loginStatus"
       :close="loginCloseFn"
@@ -31,9 +32,6 @@
       :sendAction="sendAction"
       :loginAction="loginAction"
       :style="{zIndex: zIndexLogin}"
-      :lang="lang"
-      :sendEnglishAction="sendEnglishAction"
-      :loginEnglishAction="loginEnglishAction"
       :title="loginTitle"
       :btnText="btnText"
       :subingText="subingText"
@@ -47,13 +45,15 @@
       :oauthkey="oauthKey"
       :oauthType="oauthType"
       :wechatUrl="wechatUrl"
+      :loginConfirmAction="confirmAction"
+      :loginRegisterAction="loginRegisterAction"
     ></w-login-wechat>
   </div>
 </template>
 <script>
 import modal from '@fe6/modal';
 import toast from '@fe6/toast';
-import login from 'emlogin';
+import login from 'emfelogin';
 import emCookie from 'em-cookie';
 import ajax from '../tools/ajax';
 import logoutpc from '../tools/logoutpc';
@@ -144,8 +144,8 @@ export default {
       type: String,
       default: 'zh_CN',
     },
-    sendEnglishAction: String,
-    loginEnglishAction: String,
+    confirmAction: String,
+    loginRegisterAction: String,
     loginTitle: {
       type: String,
       default: '请完善手机信息',
