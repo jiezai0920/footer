@@ -47,6 +47,7 @@
       :wechatUrl="wechatUrl"
       :loginConfirmAction="confirmAction"
       :loginRegisterAction="loginRegisterAction"
+      :resultJson="resultJson"
     ></w-login-wechat>
   </div>
 </template>
@@ -213,6 +214,7 @@ export default {
       type: Boolean,
       default: true,
     },
+    resultJson: Object,
   },
   computed: {
     isAll() {
