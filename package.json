@@ -1,6 +1,6 @@
 {
   "name": "emfooter",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "em C 端公共底部业务组件",
   "author": "李梦龙 <649076408@qq.com>",
   "main": "dist/emfooter.js",
@@ -147,6 +147,6 @@
   "dependencies": {
     "@fe6/modal": "^1.0.0",
     "@fe6/toast": "^0.2.0",
-    "emfelogin": "^0.0.6"
+    "emfelogin": "^0.0.7"
   }
 }
