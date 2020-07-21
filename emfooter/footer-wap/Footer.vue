@@ -19,35 +19,41 @@
     }" href="javascript:;" v-if="complaint" @click="goComplaint">投诉</a>
     <modal-wap v-show="confirmStatus" @cancel="cancelExit" @ok="goExit" :style="{ zIndex: zIndexModal }" v-if="isAll" :title="modalTitle" :okText="okText" :cancelText="cancelText">{{modalContent}}</modal-wap>
     <toast-wap ref="toast" v-if="isAll"></toast-wap>
-    <w-login-wechat
-      v-if="isAll"
-      style="z-index:101;"
-      :lang="lang"
-      :domain="newDomain"
-      :show="loginStatus"
-      :close="loginCloseFn"
-      :success="loginSucFn"
-      :orgid="orgid"
-      :countrycodeAction="countrycodeAction"
-      :sendAction="sendAction"
-      :loginAction="loginAction"
-      :style="{zIndex: zIndexLogin}"
-      :title="loginTitle"
-      :btnText="btnText"
-      :subingText="subingText"
-      :sendingText="sendingText"
-      :telEmptyText="telEmptyText"
-      :telFormatErrorText="telFormatErrorText"
-      :smsBtnText="smsBtnText"
-      :smsPlaceholder="smsPlaceholder"
-      :telPlaceholder="telPlaceholder"
-      :desc="desc"
-      :oauthkey="oauthKey"
-      :oauthType="oauthType"
-      :wechatUrl="wechatUrl"
-      :loginConfirmAction="confirmAction"
-      :loginRegisterAction="loginRegisterAction"
-    ></w-login-wechat>
+    <div v-if="loginStatus">  
+      <w-login-wechat
+        v-if="isAll"
+        style="z-index:101;"
+        :lang="lang"
+        :domain="newDomain"
+        :show="loginStatus"
+        :close="loginCloseFn"
+        :success="loginSucFn"
+        :orgid="orgid"
+        :countrycodeAction="countrycodeAction"
+        :sendAction="sendAction"
+        :loginAction="loginAction"
+        :style="{zIndex: zIndexLogin}"
+        :title="loginTitle"
+        :btnText="btnText"
+        :subingText="subingText"
+        :sendingText="sendingText"
+        :telEmptyText="telEmptyText"
+        :telFormatErrorText="telFormatErrorText"
+        :smsBtnText="smsBtnText"
+        :smsPlaceholder="smsPlaceholder"
+        :telPlaceholder="telPlaceholder"
+        :desc="desc"
+        :oauthkey="oauthKey"
+        :oauthType="oauthType"
+        :wechatUrl="wechatUrl"
+        :resultJson="resultJson"
+        :loginConfirmAction="loginConfirmAction"
+        :loginRegisterAction="loginRegisterAction"
+        :autologinAction="autologinAction"
+        :wechatLoginAction="wechatLoginAction"
+        :bindWechatAction="bindWechatAction"
+      ></w-login-wechat>
+    </div>
   </div>
 </template>
 <script>
@@ -55,7 +61,6 @@ import modal from '@fe6/modal';
 import toast from '@fe6/toast';
 import login from 'emfelogin';
 import emCookie from 'em-cookie';
-import ajax from '../tools/ajax';
 import logoutpc from '../tools/logoutpc';
 import { hasOwn } from '../tools/o';
 
@@ -145,7 +150,6 @@ export default {
       default: 'zh_CN',
     },
     confirmAction: String,
-    loginRegisterAction: String,
     loginTitle: {
       type: String,
       default: '请完善手机信息',
@@ -209,10 +213,26 @@ export default {
     wechatUrl: {
       type: String,
     },
+    loginConfirmAction: {
+      type: String,
+    },
+    loginRegisterAction: {
+      type: String,
+    },
+    autologinAction: {
+      type: String,
+    },
+    wechatLoginAction: {
+      type: String,
+    },
+    bindWechatAction: {
+      type: String,
+    },
     isShowLang: {
       type: Boolean,
       default: true,
     },
+    resultJson: Object,
   },
   computed: {
     isAll() {
@@ -243,10 +263,14 @@ export default {
     this.lang = this.lang || window.$cookie.get('locale') || 'zh_CN';
     this.isChina = this.lang === 'zh_CN';
     this.language = this.isChina ? 'English' : '中文';
+
+    if (this.oauthKey) {
+      this.loginStatus = true;
+    }
   },
   methods: {
     getLoginStatus(orgid) {
-      this.isLogined = !!window.$cookie.get(`Authorization?org_id=${orgid}`) || this.loginState;
+      this.isLogined = !!window.$cookie.get(`EMTOKEN_${orgid}`) || this.loginState;
     },
     goCenter() {
       if (this.isLogined) {
@@ -317,23 +341,10 @@ export default {
       this.getLoginOutUrl();
     },
     getLoginOutUrl() {
-      ajax({
-        type: 'GET',
-        action: `${this.logoutAction}?org_id=${this.orgid}`,
-        onSuccess: (res) => {
-          if (res.code === 10000) {
-            logoutpc(res, this.orgid, this, () => {
-              this.loginState = false;
-              this.getLoginStatus(this.orgid);
-              this.$emit('logout');
-            });
-          } else {
-            this.handleAjaxError(res.message);
-          }
-        },
-        onError: () => {
-          this.handleAjaxError();
-        },
+      logoutpc(this.orgid, this, () => {
+        this.loginState = false;
+        this.getLoginStatus(this.orgid);
+        this.$emit('logout');
       });
     },
     handleAjaxError() {
