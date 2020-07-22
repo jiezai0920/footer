@@ -52,6 +52,8 @@
         :autologinAction="autologinAction"
         :wechatLoginAction="wechatLoginAction"
         :bindWechatAction="bindWechatAction"
+        :isShowEmail="isShowEmail"
+        :isShowWechat="isShowWechat"
       ></w-login-wechat>
     </div>
   </div>
@@ -233,6 +235,12 @@ export default {
       default: true,
     },
     resultJson: Object,
+    isShowEmail: {
+      type: Boolean,
+    },
+    isShowWechat: {
+      type: Boolean,
+    },
   },
   computed: {
     isAll() {
@@ -247,7 +255,7 @@ export default {
         } else if (this.env.NODE_ENV === 'labing') {
           domain = `lab.${host}`;
         } else if (this.env.NODE_ENV === 'testing') {
-          domain = `inner.${host}`;
+          domain = `dev.${host}`;
         } else {
           domain = '';
         }
