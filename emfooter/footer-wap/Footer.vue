@@ -54,6 +54,8 @@
         :bindWechatAction="bindWechatAction"
         :isShowEmail="isShowEmail"
         :isShowWechat="isShowWechat"
+        :protocolsAction="protocolsAction"
+        :env="env"
       ></w-login-wechat>
     </div>
   </div>
@@ -225,6 +227,9 @@ export default {
       type: String,
     },
     wechatLoginAction: {
+      type: String,
+    },
+    protocolsAction: {
       type: String,
     },
     bindWechatAction: {
