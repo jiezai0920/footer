@@ -254,14 +254,8 @@ export default {
     newDomain() {
       let domain = '';
       if (this.env && hasOwn(this.env, 'NODE_ENV')) {
-        const host = 'evente.cn';
-        if (this.env.NODE_ENV === 'production') {
-          domain = host;
-        } else if (this.env.NODE_ENV === 'labing') {
-          domain = `lab.${host}`;
-        } else if (this.env.NODE_ENV === 'testing') {
-          domain = `dev.${host}`;
-        } else {
+        domain = document.domain.split('.').slice(-2).join('.');
+        if (process.env.NODE_ENV === 'development') {
           domain = '';
         }
       }
